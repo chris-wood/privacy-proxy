@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-09T00:23:00.927973+00:00",
+  "timestamp": "2021-03-25T00:11:16.735429+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -268,6 +268,385 @@
           "createdAt": "2021-03-08T14:03:22Z",
           "updatedAt": "2021-03-08T14:03:22Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTk5MjQ3NTI0",
+      "title": "Significant changes for Proxy DNS and SVCB request/response handling",
+      "url": "https://github.com/tfpauly/privacy-proxy/pull/6",
+      "state": "OPEN",
+      "author": "enygren",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Significant changes and clarifications, renaming the existing headers and ending up with three headers:\r\n\r\n    * Proxy-DNS-Request\r\n    * Proxy-DNS-SVCB\r\n    * Proxy-DNS-Used\r\n   \r\nAlso specify client behavior to allow SVCB-optional clients to use proxies implementing these features while incorporating performance optimizations.",
+      "createdAt": "2021-03-23T23:05:01Z",
+      "updatedAt": "2021-03-24T19:30:51Z",
+      "baseRepository": "tfpauly/privacy-proxy",
+      "baseRefName": "main",
+      "baseRefOid": "455877dc692a66c6644bb8905b9e0a70756b9562",
+      "headRepository": "enygren/privacy-proxy",
+      "headRefName": "enygren-svcb-proxy",
+      "headRefOid": "bc5a2804452b098be4b179ee3da7dfedb6b0ad7d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "body": "Note that the build is broken due to some markdown issues:  I haven't been able to get even the original to build on my machine for some reason.",
+          "createdAt": "2021-03-23T23:29:13Z",
+          "updatedAt": "2021-03-23T23:29:13Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjE5OTA2MTI5",
+          "commit": {
+            "abbreviatedOid": "6879d95"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T15:53:54Z",
+          "updatedAt": "2021-03-24T16:21:19Z",
+          "comments": [
+            {
+              "originalPosition": 35,
+              "body": "To clear the TODO below, maybe just not specify the authority form here?\r\n\r\n```suggestion\r\nClients specify the target in their CONNECT* requests by including the name or\r\n```",
+              "createdAt": "2021-03-24T15:53:55Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 45,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2021-03-24T15:54:09Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 67,
+              "body": "```suggestion\r\nIt is not always optimal for client that want to use SVCB to perform a separate\r\nDNS resolution prior to using a CONNECT* proxy, for a couple reasons:\r\n\r\n1. The extra DNS lookup incurs a performance penalty in delaying the client's\r\nconnection establishment, which might be wasted if there aren't any SVCB records present.\r\n\r\n2. If the client is using the proxy for providing additional privacy, performing\r\nDNS lookups not through the proxy might disclose the client's destination\r\nto an additional party.\r\n```",
+              "createdAt": "2021-03-24T15:58:11Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 90,
+              "body": "```suggestion\r\n1. Clients provide additional information in HTTP request header fields,\r\n   allowing the proxy to perform appropriate SVCB lookups alongside\r\n   its AAAA and A lookups.\r\n\r\n2. Proxies return HTTP response header fields specified in this\r\n   document while opportunistically establishing connections.\r\n\r\n3. Services with no SVCB records will be indicated as such\r\n   by the proxy, allowing clients can proceed with the opportunistically\r\n   established connection.  For services with SVCB records,\r\n   the proxy will provide enough information to allow clients\r\n   to decide whether they can proceed with using the connection\r\n   or whether the client needs to establish a new connection\r\n   through the proxy to the alternative endpoint specified\r\n   in a SVCB record.\r\n\r\n4. For subsequent CONNECT* requests, clients provide information\r\n   about the service name.  The proxy uses this to provide\r\n   refreshed SVCB records, and the proxy also continues to\r\n   provide additional information to the client about how\r\n   it established any given connection.\r\n```",
+              "createdAt": "2021-03-24T15:59:03Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 106,
+              "body": "What terms are you thinking of here? Proxy/target type terms, or SVCB-specific terms?",
+              "createdAt": "2021-03-24T15:59:41Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 138,
+              "body": "I'm a bit ambivalent here. I assume that the proxy can always append the \".\" when doing the lookup.",
+              "createdAt": "2021-03-24T16:01:37Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 148,
+              "body": "What's the unit here? Milliseconds?",
+              "createdAt": "2021-03-24T16:03:29Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 168,
+              "body": "Why `u`?",
+              "createdAt": "2021-03-24T16:04:33Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 168,
+              "body": "Ah, it's to get the Used response. Maybe call this out.",
+              "createdAt": "2021-03-24T16:07:47Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 345,
+              "body": "I don't think so? Closest I could find was https://tools.ietf.org/html/draft-main-ipaddr-text-rep-02\r\n",
+              "createdAt": "2021-03-24T16:12:29Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 410,
+              "body": "Not sure, I don't know if we'd use it on our client",
+              "createdAt": "2021-03-24T16:15:01Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 415,
+              "body": "Probably, yes... could that be added into this schema of types?",
+              "createdAt": "2021-03-24T16:15:27Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 425,
+              "body": "Hm, why wouldn't they be able to do this? This does seem a bit restrictive.",
+              "createdAt": "2021-03-24T16:15:55Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 532,
+              "body": "I certainly think clients should be free to use the information to determine coalescing policy, but I don't know if we need to detail it, or just can put a reference off to H2 text for that.",
+              "createdAt": "2021-03-24T16:19:47Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            },
+            {
+              "originalPosition": 581,
+              "body": "Do we need so many, I wonder? We could always just specify one good default to use.",
+              "createdAt": "2021-03-24T16:21:09Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMDQxNTk1",
+          "commit": {
+            "abbreviatedOid": "6879d95"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T17:48:20Z",
+          "updatedAt": "2021-03-24T17:48:20Z",
+          "comments": [
+            {
+              "originalPosition": 35,
+              "body": "Perhaps we also add a Terminology section that gives names to a few of these things?  The \"connect target\" and \"connect target host\" are things we end up wanting to reference concretely in a bunch of places.",
+              "createdAt": "2021-03-24T17:48:20Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMDQ2NjEx",
+          "commit": {
+            "abbreviatedOid": "95666dc"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T17:53:27Z",
+          "updatedAt": "2021-03-24T17:53:28Z",
+          "comments": [
+            {
+              "originalPosition": 106,
+              "body": "Something like \"connect target\" and \"connect target host\" seem like good ones to include as mentioned above.  Perhaps it is a short section that only has one or two items for now but references Section 1.4 of {{SVCB}} for more Terminology?",
+              "createdAt": "2021-03-24T17:53:28Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMDQ4MDk4",
+          "commit": {
+            "abbreviatedOid": "95666dc"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T17:54:58Z",
+          "updatedAt": "2021-03-24T17:54:59Z",
+          "comments": [
+            {
+              "originalPosition": 138,
+              "body": "I'm also ambivalent here.  We should pick one and specify, though.  Or specify that if the trailing \".\" is missing that the consumer should assume its presence and add it.  (The same applies for all of these containing DNS names.)",
+              "createdAt": "2021-03-24T17:54:59Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMDQ4NTc5",
+          "commit": {
+            "abbreviatedOid": "95666dc"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T17:55:27Z",
+          "updatedAt": "2021-03-24T17:55:28Z",
+          "comments": [
+            {
+              "originalPosition": 148,
+              "body": "```suggestion\r\n* wait: The maximum time in milliseconds the proxy should wait before responding to\r\n```",
+              "createdAt": "2021-03-24T17:55:27Z",
+              "updatedAt": "2021-03-24T17:55:37Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMDQ5MDg2",
+          "commit": {
+            "abbreviatedOid": "8a35681"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T17:55:58Z",
+          "updatedAt": "2021-03-24T17:55:58Z",
+          "comments": [
+            {
+              "originalPosition": 148,
+              "body": "Yes.  Added clarification.",
+              "createdAt": "2021-03-24T17:55:58Z",
+              "updatedAt": "2021-03-24T17:55:58Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMDQ5Nzg0",
+          "commit": {
+            "abbreviatedOid": "8a35681"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T17:56:36Z",
+          "updatedAt": "2021-03-24T17:56:37Z",
+          "comments": [
+            {
+              "originalPosition": 168,
+              "body": "Should we just call it \"used\"?  (especially since it is boolean and default-true so not included most of the time?)",
+              "createdAt": "2021-03-24T17:56:36Z",
+              "updatedAt": "2021-03-24T17:56:37Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMDU1Mzc3",
+          "commit": {
+            "abbreviatedOid": "8a35681"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T17:59:05Z",
+          "updatedAt": "2021-03-24T17:59:05Z",
+          "comments": [
+            {
+              "originalPosition": 348,
+              "body": "```suggestion\r\ndestination of the CONNECT* from the proxy.  If this is an IPv6\r\naddress, it MUST follow the canonical string form from {{!RFC5952}}.\r\nIf this is an IPv4 address, it MUST be in dotted octet form (four decimal\r\nvalues with no leading zeros separated by \".\").\r\n```",
+              "createdAt": "2021-03-24T17:59:05Z",
+              "updatedAt": "2021-03-24T17:59:05Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMDU2NzI4",
+          "commit": {
+            "abbreviatedOid": "8a35681"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T17:59:39Z",
+          "updatedAt": "2021-03-24T17:59:40Z",
+          "comments": [
+            {
+              "originalPosition": 345,
+              "body": "Proposed some text above.  I couldn't find any either, and raising this \r\nto sunset4 doesn't seem like a good use of time.  ;)",
+              "createdAt": "2021-03-24T17:59:39Z",
+              "updatedAt": "2021-03-24T17:59:40Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMDU5MjY3",
+          "commit": {
+            "abbreviatedOid": "8a35681"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T18:00:52Z",
+          "updatedAt": "2021-03-24T18:00:52Z",
+          "comments": [
+            {
+              "originalPosition": 415,
+              "body": "Will need to think about this.  Perhaps we open an issue to think further on this after merging?",
+              "createdAt": "2021-03-24T18:00:52Z",
+              "updatedAt": "2021-03-24T18:00:52Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMTU1MTY4",
+          "commit": {
+            "abbreviatedOid": "8a35681"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T19:28:01Z",
+          "updatedAt": "2021-03-24T19:28:01Z",
+          "comments": [
+            {
+              "originalPosition": 425,
+              "body": "It's a topic for discussion.  Some reasons:\r\n- This does change proxy semantics in normative ways.  (ie, it is changing how the proxy is deciding on what to connect to).  There may be security risks/exposures here, for example.  \r\n- This could cause load-balancing issues as those may be smaller sets than A/AAAA and the TTLs may be longer.\r\nThis should probably get a first-class issue to discuss.  (I'm thinking a WG would also want to discuss this as a topic.)",
+              "createdAt": "2021-03-24T19:28:01Z",
+              "updatedAt": "2021-03-24T19:28:01Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMTU1OTYx",
+          "commit": {
+            "abbreviatedOid": "8a35681"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T19:28:56Z",
+          "updatedAt": "2021-03-24T19:28:57Z",
+          "comments": [
+            {
+              "originalPosition": 532,
+              "body": "Perhaps another issue-tracker item?  It's not core/critical here and we could drop or elaborate based on WG interest?",
+              "createdAt": "2021-03-24T19:28:56Z",
+              "updatedAt": "2021-03-24T19:28:57Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIwMTU3NTA3",
+          "commit": {
+            "abbreviatedOid": "8a35681"
+          },
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-24T19:30:51Z",
+          "updatedAt": "2021-03-24T19:30:51Z",
+          "comments": [
+            {
+              "originalPosition": 581,
+              "body": "Maybe just pick 2-3?  Some will depend on the performance of the proxy to various DNS authorities.  SVCB-required clients may also may want a much higher value here than SVCB-optional.  I'd be happy reducing this set but we may need concrete data to propose a set.",
+              "createdAt": "2021-03-24T19:30:51Z",
+              "updatedAt": "2021-03-24T19:30:51Z"
+            }
+          ]
         }
       ]
     }
