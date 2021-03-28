@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-25T00:11:16.735429+00:00",
+  "timestamp": "2021-03-28T00:09:34.955285+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -100,15 +100,15 @@
       "id": "MDU6SXNzdWU4MTEzNjI2NDI=",
       "title": "Expand key_id to 8 bytes",
       "url": "https://github.com/tfpauly/privacy-proxy/issues/2",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "enygren",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "With key_id now being a hash of the public key, it would be preferable to switch the size of key_id to 8 bytes.  The chance of collisions with a  32-bit key_id with frequent rotations means that the key generation will need to track past keys to explicitly avoid collisions.  With a 64-bit key_id, accidental collisions is much more likely to be a non-issue.\r\n\r\n",
       "createdAt": "2021-02-18T18:42:52Z",
-      "updatedAt": "2021-02-18T23:14:22Z",
-      "closedAt": null,
+      "updatedAt": "2021-03-25T15:58:45Z",
+      "closedAt": "2021-03-25T15:58:45Z",
       "comments": [
         {
           "author": "enygren",
@@ -123,6 +123,13 @@
           "body": "> We should also define the encoding of the public key being hashed\r\n\r\nThe public key is a DER-encoded SubjectPublicKeyInfo, which is fairly standard. 8 bytes seems fine here.",
           "createdAt": "2021-02-18T23:14:22Z",
           "updatedAt": "2021-02-18T23:14:22Z"
+        },
+        {
+          "author": "tfpauly",
+          "authorAssociation": "OWNER",
+          "body": "I think this is done?",
+          "createdAt": "2021-03-25T15:58:45Z",
+          "updatedAt": "2021-03-25T15:58:45Z"
         }
       ]
     },
@@ -649,6 +656,87 @@
           ]
         }
       ]
+    },
+    {
+      "number": 7,
+      "id": "MDExOlB1bGxSZXF1ZXN0NjAwOTA2NDk2",
+      "title": "Support both rsa2048 and rsa4096",
+      "url": "https://github.com/tfpauly/privacy-proxy/pull/7",
+      "state": "CLOSED",
+      "author": "enygren",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #1 \r\n\r\nUse version to differentiate (with v1=rsa4096 and v2=rsa2048).  There may be cleaner ways to address this,\r\nbut doing this retains wire compatibility with version 1.",
+      "createdAt": "2021-03-25T16:56:51Z",
+      "updatedAt": "2021-03-25T18:06:10Z",
+      "baseRepository": "tfpauly/privacy-proxy",
+      "baseRefName": "main",
+      "baseRefOid": "455877dc692a66c6644bb8905b9e0a70756b9562",
+      "headRepository": "enygren/privacy-proxy",
+      "headRefName": "patch-1",
+      "headRefOid": "1b267f93167dae671d3665ce815ce2e08cec95ef",
+      "closedAt": "2021-03-25T18:06:10Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "tfpauly",
+          "authorAssociation": "OWNER",
+          "body": "@enygren I was chatting with @chris-wood , and we\u2019re thinking of just relaxing the version to not for the Nk length, actually. Do you see any issue with that? ",
+          "createdAt": "2021-03-25T17:00:26Z",
+          "updatedAt": "2021-03-25T17:00:26Z"
+        },
+        {
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "body": "So allowing Nk to be variable and the remainder of the token size for v1?  That would also be fine/better.",
+          "createdAt": "2021-03-25T17:03:28Z",
+          "updatedAt": "2021-03-25T17:03:28Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks, @enygren :-)",
+          "createdAt": "2021-03-25T17:07:41Z",
+          "updatedAt": "2021-03-25T17:07:41Z"
+        },
+        {
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "body": "Abandoning in-favor of an alternate PR, coming shortly.",
+          "createdAt": "2021-03-25T18:06:10Z",
+          "updatedAt": "2021-03-25T18:06:10Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "MDExOlB1bGxSZXF1ZXN0NjAwOTUzMDU4",
+      "title": "Support alternate key lengths",
+      "url": "https://github.com/tfpauly/privacy-proxy/pull/8",
+      "state": "OPEN",
+      "author": "enygren",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #1 \r\n\r\n",
+      "createdAt": "2021-03-25T18:06:50Z",
+      "updatedAt": "2021-03-25T18:11:10Z",
+      "baseRepository": "tfpauly/privacy-proxy",
+      "baseRefName": "main",
+      "baseRefOid": "455877dc692a66c6644bb8905b9e0a70756b9562",
+      "headRepository": "enygren/privacy-proxy",
+      "headRefName": "token-alt-len",
+      "headRefOid": "716fad03fa41356b3bff6609f9b93294dee84da5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
