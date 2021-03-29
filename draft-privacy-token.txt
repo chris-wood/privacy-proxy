@@ -5,9 +5,9 @@
 Network Working Group                                           T. Pauly
 Internet-Draft                                                 F. Jacobs
 Intended status: Experimental                                 Apple Inc.
-Expires: 9 September 2021                                      C.A. Wood
+Expires: 30 September 2021                                     C.A. Wood
                                                               Cloudflare
-                                                            8 March 2021
+                                                           29 March 2021
 
 
               The Privacy Token HTTP Authentication Scheme
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 September 2021.
+   This Internet-Draft will expire on 30 September 2021.
 
 Copyright Notice
 
@@ -113,7 +113,10 @@ Table of Contents
       signature.
 
    *  "signature" is a Nk-octet RSA Blind Signature that covers the
-      message.  For version 1, Nk is 512.
+      message.  For version 1, Nk is indicated by size of the Token
+      structure and may be 256, 384, or 512.  These correspond to RSA
+      2048, 3072, and 4096 bit keys.  Clients implementing version 1
+      MUST support signature sizes with Nk of 512 and 256.
 
 3.  PrivacyToken Authentication Scheme
 
