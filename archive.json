@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-28T00:09:34.955285+00:00",
+  "timestamp": "2021-03-30T00:09:03.001458+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -283,28 +283,30 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTk5MjQ3NTI0",
       "title": "Significant changes for Proxy DNS and SVCB request/response handling",
       "url": "https://github.com/tfpauly/privacy-proxy/pull/6",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "enygren",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Significant changes and clarifications, renaming the existing headers and ending up with three headers:\r\n\r\n    * Proxy-DNS-Request\r\n    * Proxy-DNS-SVCB\r\n    * Proxy-DNS-Used\r\n   \r\nAlso specify client behavior to allow SVCB-optional clients to use proxies implementing these features while incorporating performance optimizations.",
       "createdAt": "2021-03-23T23:05:01Z",
-      "updatedAt": "2021-03-24T19:30:51Z",
+      "updatedAt": "2021-03-29T19:25:33Z",
       "baseRepository": "tfpauly/privacy-proxy",
       "baseRefName": "main",
       "baseRefOid": "455877dc692a66c6644bb8905b9e0a70756b9562",
       "headRepository": "enygren/privacy-proxy",
       "headRefName": "enygren-svcb-proxy",
       "headRefOid": "bc5a2804452b098be4b179ee3da7dfedb6b0ad7d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-03-29T19:25:32Z",
+      "mergedAt": "2021-03-29T19:25:32Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "bc5a2804452b098be4b179ee3da7dfedb6b0ad7d"
+      },
       "comments": [
         {
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "Note that the build is broken due to some markdown issues:  I haven't been able to get even the original to build on my machine for some reason.",
           "createdAt": "2021-03-23T23:29:13Z",
           "updatedAt": "2021-03-23T23:29:13Z"
@@ -421,7 +423,7 @@
             "abbreviatedOid": "6879d95"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T17:48:20Z",
@@ -441,7 +443,7 @@
             "abbreviatedOid": "95666dc"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T17:53:27Z",
@@ -461,7 +463,7 @@
             "abbreviatedOid": "95666dc"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T17:54:58Z",
@@ -481,7 +483,7 @@
             "abbreviatedOid": "95666dc"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T17:55:27Z",
@@ -501,7 +503,7 @@
             "abbreviatedOid": "8a35681"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T17:55:58Z",
@@ -521,7 +523,7 @@
             "abbreviatedOid": "8a35681"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T17:56:36Z",
@@ -541,7 +543,7 @@
             "abbreviatedOid": "8a35681"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T17:59:05Z",
@@ -561,7 +563,7 @@
             "abbreviatedOid": "8a35681"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T17:59:39Z",
@@ -581,7 +583,7 @@
             "abbreviatedOid": "8a35681"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T18:00:52Z",
@@ -601,7 +603,7 @@
             "abbreviatedOid": "8a35681"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T19:28:01Z",
@@ -621,7 +623,7 @@
             "abbreviatedOid": "8a35681"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T19:28:56Z",
@@ -641,7 +643,7 @@
             "abbreviatedOid": "8a35681"
           },
           "author": "enygren",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2021-03-24T19:30:51Z",
@@ -717,26 +719,50 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NjAwOTUzMDU4",
       "title": "Support alternate key lengths",
       "url": "https://github.com/tfpauly/privacy-proxy/pull/8",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "enygren",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Fixes #1 \r\n\r\n",
       "createdAt": "2021-03-25T18:06:50Z",
-      "updatedAt": "2021-03-25T18:11:10Z",
+      "updatedAt": "2021-03-29T19:25:30Z",
       "baseRepository": "tfpauly/privacy-proxy",
       "baseRefName": "main",
       "baseRefOid": "455877dc692a66c6644bb8905b9e0a70756b9562",
       "headRepository": "enygren/privacy-proxy",
       "headRefName": "token-alt-len",
       "headRefOid": "716fad03fa41356b3bff6609f9b93294dee84da5",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "closedAt": "2021-03-29T19:25:30Z",
+      "mergedAt": "2021-03-29T19:25:30Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "a65ac3ce44b0accd61ac73bb23a55495bedb70f2"
+      },
+      "comments": [
+        {
+          "author": "tfpauly",
+          "authorAssociation": "OWNER",
+          "body": "Looks good!",
+          "createdAt": "2021-03-28T20:36:27Z",
+          "updatedAt": "2021-03-28T20:36:27Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjIzNTcyNzE2",
+          "commit": {
+            "abbreviatedOid": "716fad0"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-03-29T19:25:21Z",
+          "updatedAt": "2021-03-29T19:25:21Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
