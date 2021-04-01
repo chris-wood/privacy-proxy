@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-30T00:09:03.001458+00:00",
+  "timestamp": "2021-04-01T00:09:47.713091+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -290,7 +290,7 @@
       "labels": [],
       "body": "Significant changes and clarifications, renaming the existing headers and ending up with three headers:\r\n\r\n    * Proxy-DNS-Request\r\n    * Proxy-DNS-SVCB\r\n    * Proxy-DNS-Used\r\n   \r\nAlso specify client behavior to allow SVCB-optional clients to use proxies implementing these features while incorporating performance optimizations.",
       "createdAt": "2021-03-23T23:05:01Z",
-      "updatedAt": "2021-03-29T19:25:33Z",
+      "updatedAt": "2021-03-30T16:44:58Z",
       "baseRepository": "tfpauly/privacy-proxy",
       "baseRefName": "main",
       "baseRefOid": "455877dc692a66c6644bb8905b9e0a70756b9562",
@@ -310,6 +310,20 @@
           "body": "Note that the build is broken due to some markdown issues:  I haven't been able to get even the original to build on my machine for some reason.",
           "createdAt": "2021-03-23T23:29:13Z",
           "updatedAt": "2021-03-23T23:29:13Z"
+        },
+        {
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I'm confused --- this doesn't seem to be showing up in  https://github.com/tfpauly/privacy-proxy/blob/main/draft-proxied-svcb-headers.md ?",
+          "createdAt": "2021-03-30T16:35:34Z",
+          "updatedAt": "2021-03-30T16:35:34Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Your other PR had commits from this PR, so GitHub probably got confused. You'll need to reopen this. :-(",
+          "createdAt": "2021-03-30T16:44:58Z",
+          "updatedAt": "2021-03-30T16:44:58Z"
         }
       ],
       "reviews": [
@@ -761,6 +775,187 @@
           "createdAt": "2021-03-29T19:25:21Z",
           "updatedAt": "2021-03-29T19:25:21Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "MDExOlB1bGxSZXF1ZXN0NjA0MjM5NzAz",
+      "title": "Significant changes for Proxy DNS and SVCB request/response handling : try 2",
+      "url": "https://github.com/tfpauly/privacy-proxy/pull/9",
+      "state": "OPEN",
+      "author": "enygren",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-03-30T18:42:57Z",
+      "updatedAt": "2021-03-31T20:52:01Z",
+      "baseRepository": "tfpauly/privacy-proxy",
+      "baseRefName": "main",
+      "baseRefOid": "a65ac3ce44b0accd61ac73bb23a55495bedb70f2",
+      "headRepository": "enygren/privacy-proxy",
+      "headRefName": "enygren-svcb-proxy-pr3",
+      "headRefOid": "dc5ddd9e8ebe1c6ee944508740c0701590da2c7b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hopefully this should actually be able to be merged?",
+          "createdAt": "2021-03-30T18:48:32Z",
+          "updatedAt": "2021-03-30T18:48:32Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI1NjM0Njgx",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "MikeBishop",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "This is a good start, with mostly nits and comments on issues that can be deferred from this PR.\r\n\r\nI do feel like we don't have a good story (or perhaps merely a good example?) for cases which involve a mix of CNAMEs and AliasMode entries, though perhaps that's alleviated by the current design of telling the proxy not to consider SVCB records in performing the actual connection.",
+          "createdAt": "2021-03-31T19:15:11Z",
+          "updatedAt": "2021-03-31T20:52:01Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "```suggestion\r\nfields for passing DNS metadata in HTTP responses.\r\n```",
+              "createdAt": "2021-03-31T19:15:11Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 48,
+              "body": "```suggestion\r\nmight need to perform additional DNS resolutions prior to issuing a CONNECT* request, as clients\r\n```\r\nLet's at least make this conditional, since part of the point of this draft is not needing to do so.",
+              "createdAt": "2021-03-31T19:35:36Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 61,
+              "body": "```suggestion\r\nIt is not always optimal for a client that wants to use SVCB to perform a separate\r\n```\r\nI probably would have said \"clients,\" but your numbered points below reference a singular client.",
+              "createdAt": "2021-03-31T19:36:11Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 68,
+              "body": "```suggestion\r\nDNS lookups without going through the proxy might disclose the client's destination\r\n```",
+              "createdAt": "2021-03-31T19:37:38Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 70,
+              "body": "```suggestion\r\n\r\n3. If DNS responses vary based on the client's network location, DNS lookups performed by the\r\nclient might not be appropriate for a connection made via the proxy.\r\n\r\n```",
+              "createdAt": "2021-03-31T19:38:58Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 83,
+              "body": "```suggestion\r\n   by the proxy, allowing clients to proceed with the opportunistically\r\n```",
+              "createdAt": "2021-03-31T19:39:58Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 88,
+              "body": "```suggestion\r\n   through the proxy to an alternative endpoint specified\r\n```",
+              "createdAt": "2021-03-31T19:40:31Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 161,
+              "body": "```suggestion\r\n  to receive by specifying this parameter.  Its value MUST\r\n```",
+              "createdAt": "2021-03-31T19:46:41Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 165,
+              "body": "Hopefully covered in more detail later, but this doesn't specify behavior if it is present.  Does the proxy strip out other SVCB parameters, or does it return only SVCB entries that contain at least one of these parameters?",
+              "createdAt": "2021-03-31T19:48:19Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 169,
+              "body": "```suggestion\r\n  values.  This draft specifies version \"draft-01\".\r\n```\r\nAre you intending this to change automatically with draft versions, or increment manually when there's a breaking change?  If automatically, I suspect there are I-D Template ways to sub in the draft version during submission here.",
+              "createdAt": "2021-03-31T19:49:54Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 171,
+              "body": "Again, perhaps more detail later, but what does \"DNS information\" mean in this context?  Is this the CNAME chain?",
+              "createdAt": "2021-03-31T19:51:19Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 269,
+              "body": "```suggestion\r\n\r\nMultiple factors influence which records are returned in this header:\r\n```",
+              "createdAt": "2021-03-31T19:55:21Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 295,
+              "body": "I'm not sure these are the same thing.  How about simply....\r\n```suggestion\r\n  invalid record), the Proxy-SVCB-DNS header MUST NOT be returned.\r\n```",
+              "createdAt": "2021-03-31T20:05:50Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 322,
+              "body": "Given that the ellipsis is intended to represent longer content in the field, it might be better not to encode literal `...` in these binary examples.\r\n```suggestion\r\nproxy-dns-svcb = \"svc2.example.net.\";priority=1;ttl=1800;key1=:aDIsaDM=:;key5=:MTIz...:,\r\n                 \"svc.example.net.\";priority=2;ttl=1800;key1=:aDI=:;key5=:YWJj...:\r\n```",
+              "createdAt": "2021-03-31T20:12:51Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 360,
+              "body": "We might use `host` out of RFC 3986, since it specifies IPv4, IPv6, and hostname rendering. ",
+              "createdAt": "2021-03-31T20:18:40Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 362,
+              "body": "I understand the point, but I don't know that a hostname can be said to \"be\" a series of CNAMEs.  Perhaps...\r\n```suggestion\r\nIf the hostname provided by the client referred to one or more\r\nCNAMEs before resolving to an IP address,\r\n```",
+              "createdAt": "2021-03-31T20:21:26Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 378,
+              "body": "```suggestion\r\n  If this parameter is specified, its value MUST be an sf-string\r\n```",
+              "createdAt": "2021-03-31T20:22:29Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 421,
+              "body": "At first glance, it appears to be redundant. Is there a situation in which the owner is not simply the original hostname (for the first entry) or the preceding hostname (for subsequent entries)?\r\n\r\nHowever, if we want to be able to include additional information in the future, it might make sense to swap the format around; rather than including a list of CNAME(s) and/or IP(s) and giving an owner for each, list the owner first and an inner list of useful records for each.",
+              "createdAt": "2021-03-31T20:28:19Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 430,
+              "body": "I think this probably is too restrictive, especially in the case of SVCB-naive clients.  It means a high probability of the client having to open a new tunnel after processing the records, even though avoiding that is something this spec states as a goal.\r\n\r\nIt still seems reasonable for the proxy to chase AliasMode records, use hints, etc. to choose the target to connect to.  The flip side, I suppose, would be if the proxy chooses a host whose ALPN list doesn't reflect the client's support, but that could be solved by requiring the server to choose based on the transport protocol implied by the method, and then preferring the default ALPN within that.  Alternatively, the client could include an ALPN list in the request.\r\n\r\nHowever, it's also totally reasonable to save that for a separate PR if we decide to do it.",
+              "createdAt": "2021-03-31T20:37:16Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 437,
+              "body": "Given the problems of doing such a resolution noted above, how would they do that?  It might make more sense to say that a client which is SVCB-required must abandon the tunnel if it doesn't receive SVCB records from the proxy.",
+              "createdAt": "2021-03-31T20:40:17Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 537,
+              "body": "My vote is for removal.  Coalescing based on IP address is not a battle we've been winning, and I don't think this draft is the venue to continue fighting it.",
+              "createdAt": "2021-03-31T20:47:32Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            },
+            {
+              "originalPosition": 558,
+              "body": "HTTP-core is moving these registries and will likely be an RFC before this document.  Let's go ahead and point there.",
+              "createdAt": "2021-03-31T20:48:56Z",
+              "updatedAt": "2021-03-31T20:52:01Z"
+            }
+          ]
         }
       ]
     }
