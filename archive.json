@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-04-01T00:09:47.713091+00:00",
+  "timestamp": "2021-04-06T00:10:07.762043+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -790,13 +790,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2021-03-30T18:42:57Z",
-      "updatedAt": "2021-03-31T20:52:01Z",
+      "updatedAt": "2021-04-05T18:58:02Z",
       "baseRepository": "tfpauly/privacy-proxy",
       "baseRefName": "main",
       "baseRefOid": "a65ac3ce44b0accd61ac73bb23a55495bedb70f2",
       "headRepository": "enygren/privacy-proxy",
       "headRefName": "enygren-svcb-proxy-pr3",
-      "headRefOid": "dc5ddd9e8ebe1c6ee944508740c0701590da2c7b",
+      "headRefOid": "b5d1935e6804df806dc386abbd7e794126d968b0",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -827,133 +827,413 @@
               "originalPosition": 24,
               "body": "```suggestion\r\nfields for passing DNS metadata in HTTP responses.\r\n```",
               "createdAt": "2021-03-31T19:15:11Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 48,
               "body": "```suggestion\r\nmight need to perform additional DNS resolutions prior to issuing a CONNECT* request, as clients\r\n```\r\nLet's at least make this conditional, since part of the point of this draft is not needing to do so.",
               "createdAt": "2021-03-31T19:35:36Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 61,
               "body": "```suggestion\r\nIt is not always optimal for a client that wants to use SVCB to perform a separate\r\n```\r\nI probably would have said \"clients,\" but your numbered points below reference a singular client.",
               "createdAt": "2021-03-31T19:36:11Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 68,
               "body": "```suggestion\r\nDNS lookups without going through the proxy might disclose the client's destination\r\n```",
               "createdAt": "2021-03-31T19:37:38Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 70,
               "body": "```suggestion\r\n\r\n3. If DNS responses vary based on the client's network location, DNS lookups performed by the\r\nclient might not be appropriate for a connection made via the proxy.\r\n\r\n```",
               "createdAt": "2021-03-31T19:38:58Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 83,
               "body": "```suggestion\r\n   by the proxy, allowing clients to proceed with the opportunistically\r\n```",
               "createdAt": "2021-03-31T19:39:58Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 88,
               "body": "```suggestion\r\n   through the proxy to an alternative endpoint specified\r\n```",
               "createdAt": "2021-03-31T19:40:31Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 161,
               "body": "```suggestion\r\n  to receive by specifying this parameter.  Its value MUST\r\n```",
               "createdAt": "2021-03-31T19:46:41Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 165,
               "body": "Hopefully covered in more detail later, but this doesn't specify behavior if it is present.  Does the proxy strip out other SVCB parameters, or does it return only SVCB entries that contain at least one of these parameters?",
               "createdAt": "2021-03-31T19:48:19Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 169,
               "body": "```suggestion\r\n  values.  This draft specifies version \"draft-01\".\r\n```\r\nAre you intending this to change automatically with draft versions, or increment manually when there's a breaking change?  If automatically, I suspect there are I-D Template ways to sub in the draft version during submission here.",
               "createdAt": "2021-03-31T19:49:54Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 171,
               "body": "Again, perhaps more detail later, but what does \"DNS information\" mean in this context?  Is this the CNAME chain?",
               "createdAt": "2021-03-31T19:51:19Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 269,
               "body": "```suggestion\r\n\r\nMultiple factors influence which records are returned in this header:\r\n```",
               "createdAt": "2021-03-31T19:55:21Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 295,
               "body": "I'm not sure these are the same thing.  How about simply....\r\n```suggestion\r\n  invalid record), the Proxy-SVCB-DNS header MUST NOT be returned.\r\n```",
               "createdAt": "2021-03-31T20:05:50Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 322,
               "body": "Given that the ellipsis is intended to represent longer content in the field, it might be better not to encode literal `...` in these binary examples.\r\n```suggestion\r\nproxy-dns-svcb = \"svc2.example.net.\";priority=1;ttl=1800;key1=:aDIsaDM=:;key5=:MTIz...:,\r\n                 \"svc.example.net.\";priority=2;ttl=1800;key1=:aDI=:;key5=:YWJj...:\r\n```",
               "createdAt": "2021-03-31T20:12:51Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 360,
               "body": "We might use `host` out of RFC 3986, since it specifies IPv4, IPv6, and hostname rendering. ",
               "createdAt": "2021-03-31T20:18:40Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 362,
               "body": "I understand the point, but I don't know that a hostname can be said to \"be\" a series of CNAMEs.  Perhaps...\r\n```suggestion\r\nIf the hostname provided by the client referred to one or more\r\nCNAMEs before resolving to an IP address,\r\n```",
               "createdAt": "2021-03-31T20:21:26Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 378,
               "body": "```suggestion\r\n  If this parameter is specified, its value MUST be an sf-string\r\n```",
               "createdAt": "2021-03-31T20:22:29Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 421,
               "body": "At first glance, it appears to be redundant. Is there a situation in which the owner is not simply the original hostname (for the first entry) or the preceding hostname (for subsequent entries)?\r\n\r\nHowever, if we want to be able to include additional information in the future, it might make sense to swap the format around; rather than including a list of CNAME(s) and/or IP(s) and giving an owner for each, list the owner first and an inner list of useful records for each.",
               "createdAt": "2021-03-31T20:28:19Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 430,
               "body": "I think this probably is too restrictive, especially in the case of SVCB-naive clients.  It means a high probability of the client having to open a new tunnel after processing the records, even though avoiding that is something this spec states as a goal.\r\n\r\nIt still seems reasonable for the proxy to chase AliasMode records, use hints, etc. to choose the target to connect to.  The flip side, I suppose, would be if the proxy chooses a host whose ALPN list doesn't reflect the client's support, but that could be solved by requiring the server to choose based on the transport protocol implied by the method, and then preferring the default ALPN within that.  Alternatively, the client could include an ALPN list in the request.\r\n\r\nHowever, it's also totally reasonable to save that for a separate PR if we decide to do it.",
               "createdAt": "2021-03-31T20:37:16Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 437,
               "body": "Given the problems of doing such a resolution noted above, how would they do that?  It might make more sense to say that a client which is SVCB-required must abandon the tunnel if it doesn't receive SVCB records from the proxy.",
               "createdAt": "2021-03-31T20:40:17Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 537,
               "body": "My vote is for removal.  Coalescing based on IP address is not a battle we've been winning, and I don't think this draft is the venue to continue fighting it.",
               "createdAt": "2021-03-31T20:47:32Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
             },
             {
               "originalPosition": 558,
               "body": "HTTP-core is moving these registries and will likely be an RFC before this document.  Let's go ahead and point there.",
               "createdAt": "2021-03-31T20:48:56Z",
-              "updatedAt": "2021-03-31T20:52:01Z"
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDYwNjk1",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:35:16Z",
+          "updatedAt": "2021-04-05T18:35:17Z",
+          "comments": [
+            {
+              "originalPosition": 165,
+              "body": "Just strips out other parameters.  Is this not clear later?",
+              "createdAt": "2021-04-05T18:35:17Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDYxNDUx",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:36:19Z",
+          "updatedAt": "2021-04-05T18:36:19Z",
+          "comments": [
+            {
+              "originalPosition": 169,
+              "body": "Just when breaking changes.",
+              "createdAt": "2021-04-05T18:36:19Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDYyNjE3",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:37:58Z",
+          "updatedAt": "2021-04-05T18:37:58Z",
+          "comments": [
+            {
+              "originalPosition": 295,
+              "body": "In structured headers they are the same thing.  Would saying an empty sf-list be more clear?",
+              "createdAt": "2021-04-05T18:37:58Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDY0NDQy",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:40:37Z",
+          "updatedAt": "2021-04-05T18:40:38Z",
+          "comments": [
+            {
+              "originalPosition": 362,
+              "body": "```suggestion\r\nIf the hostname connected to by the proxy aliased to one or more CNAMEs,\r\n```",
+              "createdAt": "2021-04-05T18:40:37Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDY0Nzk2",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:41:08Z",
+          "updatedAt": "2021-04-05T18:41:08Z",
+          "comments": [
+            {
+              "originalPosition": 362,
+              "body": "(incorporating this but with \"aliased\" rather than \"referred\"",
+              "createdAt": "2021-04-05T18:41:08Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDY2MjA1",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:43:16Z",
+          "updatedAt": "2021-04-05T18:43:16Z",
+          "comments": [
+            {
+              "originalPosition": 421,
+              "body": "The redundancy is why I'm include to leave it optional or just get rid of it.  It could be helpful for cases such as DNSSEC in the future, or perhaps if we include NS records or other things,",
+              "createdAt": "2021-04-05T18:43:16Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDY3NjE4",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:45:19Z",
+          "updatedAt": "2021-04-05T18:45:19Z",
+          "comments": [
+            {
+              "originalPosition": 430,
+              "body": "Part of why I'm wary of this is that it changes the Proxy behavior and semantics substantially.  Rather than the proxy just returning additional information, here we start fundamentally changing behavior.  (Would doing this count as an \"Update\" to any of the RFCs defining CONNECT, for example?)",
+              "createdAt": "2021-04-05T18:45:19Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDY4NTk1",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:46:48Z",
+          "updatedAt": "2021-04-05T18:46:48Z",
+          "comments": [
+            {
+              "originalPosition": 437,
+              "body": "They could do DoH through the proxy, for example.  Or use ODoH.  Or do something else.  We could mention this in security considerations, but it seems like an implementation detail we don't want to get into?  This is already covered in the core SVCB draft in some detail.",
+              "createdAt": "2021-04-05T18:46:48Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDY4OTU4",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:47:20Z",
+          "updatedAt": "2021-04-05T18:47:21Z",
+          "comments": [
+            {
+              "originalPosition": 537,
+              "body": "```suggestion\r\n\r\n```",
+              "createdAt": "2021-04-05T18:47:20Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDY5ODIz",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:48:35Z",
+          "updatedAt": "2021-04-05T18:48:36Z",
+          "comments": [
+            {
+              "originalPosition": 556,
+              "body": "```suggestion\r\n*TODO*: Move the registries below to the new HTTP-core registry.\r\n\r\nThis document registers the \"Proxy-DNS-Request\" and \"Proxy-DNS-SVCB\",\r\n```",
+              "createdAt": "2021-04-05T18:48:35Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDY5OTk1",
+          "commit": {
+            "abbreviatedOid": "dc5ddd9"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:48:50Z",
+          "updatedAt": "2021-04-05T18:48:51Z",
+          "comments": [
+            {
+              "originalPosition": 558,
+              "body": "Added a todo",
+              "createdAt": "2021-04-05T18:48:50Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDc0MTg1",
+          "commit": {
+            "abbreviatedOid": "5cc3bbe"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:54:48Z",
+          "updatedAt": "2021-04-05T18:54:49Z",
+          "comments": [
+            {
+              "originalPosition": 604,
+              "body": "```suggestion\r\n\r\n# Acknowledgments\r\n\r\nThank you to Mike Bishop, Chris Wood, and others for their feedback and suggestions on this draft.\r\n```",
+              "createdAt": "2021-04-05T18:54:49Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDc0OTU5",
+          "commit": {
+            "abbreviatedOid": "3ab0b48"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:55:56Z",
+          "updatedAt": "2021-04-05T18:55:57Z",
+          "comments": [
+            {
+              "originalPosition": 609,
+              "body": "```suggestion\r\nThank you to Mike Bishop, Chris Wood, \r\nand others for their feedback and suggestions on this draft.\r\n\r\n# Appendix: Additional Examples {#examples}\r\n\r\n```",
+              "createdAt": "2021-04-05T18:55:56Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI4MDc2MzI4",
+          "commit": {
+            "abbreviatedOid": "3ab0b48"
+          },
+          "author": "enygren",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-05T18:57:52Z",
+          "updatedAt": "2021-04-05T18:57:53Z",
+          "comments": [
+            {
+              "originalPosition": 171,
+              "body": "yes, A/AAAA/CNAME records\r\n```suggestion\r\n* u: Clients can indicate whether they want DNS information (A, AAAA,\r\n    and CNAME records) about\r\n```",
+              "createdAt": "2021-04-05T18:57:52Z",
+              "updatedAt": "2021-04-05T18:58:02Z"
             }
           ]
         }
