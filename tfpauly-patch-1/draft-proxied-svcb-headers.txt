@@ -4,8 +4,8 @@
 
 Network Working Group                                           T. Pauly
 Internet-Draft                                               Apple, Inc.
-Intended status: Standards Track                            8 March 2021
-Expires: 9 September 2021
+Intended status: Standards Track                           25 April 2021
+Expires: 27 October 2021
 
 
               HTTP Header Fields for Proxied SVCB Metadata
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 September 2021.
+   This Internet-Draft will expire on 27 October 2021.
 
 Copyright Notice
 
@@ -202,9 +202,9 @@ Table of Contents
               Schwartz, B., Bishop, M., and E. Nygren, "Service binding
               and parameter specification via the DNS (DNS SVCB and
               HTTPS RRs)", Work in Progress, Internet-Draft, draft-ietf-
-              dnsop-svcb-https-03, 17 February 2021,
+              dnsop-svcb-https-05, 21 April 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-
-              svcb-https-03.txt>.
+              svcb-https-05.txt>.
 
    [I-D.ietf-masque-connect-udp]
               Schinazi, D., "The CONNECT-UDP HTTP Method", Work in
@@ -216,9 +216,9 @@ Table of Contents
    [I-D.ietf-tls-esni]
               Rescorla, E., Oku, K., Sullivan, N., and C. A. Wood, "TLS
               Encrypted Client Hello", Work in Progress, Internet-Draft,
-              draft-ietf-tls-esni-09, 16 December 2020,
+              draft-ietf-tls-esni-10, 8 March 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-tls-
-              esni-09.txt>.
+              esni-10.txt>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
